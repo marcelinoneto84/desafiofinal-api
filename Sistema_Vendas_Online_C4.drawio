@@ -1,0 +1,122 @@
+<mxfile host="app.diagrams.net" modified="2025-10-24T23:59:00.000Z" agent="5.0 (Windows)" version="24.7.12" editor="draw.io">
+  <diagram id="c1-diagrama-contexto" name="C1 - Contexto">
+    <mxGraphModel dx="1554" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Atores externos -->
+        <mxCell id="cliente" value="Usuário Parceiro (via Postman ou HTTP Client)" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="100" y="250" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Sistema principal -->
+        <mxCell id="sistema" value="Sistema de Exposição de Dados (API RESTful)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="200" width="300" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Banco -->
+        <mxCell id="banco" value="Banco H2 (Persistência Local)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="800" y="230" width="150" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Relacionamentos -->
+        <mxCell id="cliente-sistema" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#000000;" edge="1" parent="1" source="cliente" target="sistema">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="sistema-banco" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#000000;" edge="1" parent="1" source="sistema" target="banco">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="c2-diagrama-containers" name="C2 - Containers">
+    <mxGraphModel dx="1554" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Cliente externo -->
+        <mxCell id="user" value="Usuário / Parceiro (Postman ou HTTP Client)" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="350" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="gateway" value="Gateway de API (Spring Boot REST)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="320" y="200" width="240" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- Containers -->
+        <mxCell id="clientes" value="Serviço de Clientes (Spring Boot)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="620" y="100" width="200" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="produtos" value="Serviço de Produtos (Spring Boot)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="620" y="240" width="200" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="pedidos" value="Serviço de Pedidos (Spring Boot)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="620" y="380" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Banco -->
+        <mxCell id="h2" value="Banco H2 (Local)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="900" y="250" width="130" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Ligações -->
+        <mxCell id="user-gateway" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#000000;" edge="1" parent="1" source="user" target="gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="gateway-clientes" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#000000;" edge="1" parent="1" source="gateway" target="clientes">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="gateway-produtos" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#000000;" edge="1" parent="1" source="gateway" target="produtos">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="gateway-pedidos" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#000000;" edge="1" parent="1" source="gateway" target="pedidos">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="servicos-banco" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#000000;" edge="1" parent="1" source="produtos" target="h2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="c3-diagrama-componentes" name="C3 - Componentes (Serviço Clientes)">
+    <mxGraphModel dx="1554" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="controller" value="ClienteController&#xa;Responsável por expor os endpoints REST" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="180" y="150" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="service" value="ClienteService&#xa;Camada de negócio: CRUD, validações, contagem" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="150" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="repository" value="ClienteRepository&#xa;Interface com o banco via Spring Data JPA" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="740" y="150" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="entity" value="Cliente (Entidade JPA)&#xa;Representa o domínio de cliente" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="460" y="300" width="220" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Ligações -->
+        <mxCell id="controller-service" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;" edge="1" parent="1" source="controller" target="service">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="service-repo" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;" edge="1" parent="1" source="service" target="repository">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="repo-entity" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;" edge="1" parent="1" source="repository" target="entity">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

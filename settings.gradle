@@ -1,0 +1,5 @@
+rootProject.name = 'desafiofinal-api'
+
+include 'cliente'
+include 'produto'
+include 'pedido'

@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "sistema-vendas-online-api-v2",
+		"name": "Sistema Vendas Online - API Collection v2",
+		"description": "Collection completa para testar a API do Sistema de Vendas Online com módulos Cliente, Produto e Pedido rodando em portas separadas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "🧑‍💼 CLIENTES (Port 8081)",
+			"item": [
+				{
+					"name": "📋 Listar Todos os Clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"clientes"
+							]
+						},
+						"description": "Retorna todos os clientes cadastrados"
+					}
+				},
+				{
+					"name": "🔍 Buscar Cliente por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/clientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Busca um cliente específico pelo ID"
+					}
+				},
+				{
+					"name": "👤 Buscar Cliente por Nome",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/clientes/nome/João",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"clientes",
+								"nome",
+								"João"
+							]
+						},
+						"description": "Busca clientes pelo nome"
+					}
+				},
+				{
+					"name": "📊 Contar Total de Clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/clientes/contar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"clientes",
+								"contar"
+							]
+						},
+						"description": "Retorna o número total de clientes cadastrados"
+					}
+				},
+				{
+					"name": "➕ Criar Novo Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao.silva@email.com\",\n  \"documento\": \"12345678901\",\n  \"score\": 850\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"clientes"
+							]
+						},
+						"description": "Cria um novo cliente"
+					}
+				},
+				{
+					"name": "✏️ Atualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Santos Silva\",\n  \"email\": \"joao.santos@email.com\",\n  \"documento\": \"12345678901\",\n  \"score\": 900\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/clientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Atualiza um cliente existente"
+					}
+				},
+				{
+					"name": "🗑️ Deletar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/clientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"clientes",
+								"1"
+							]
+						},
+						"description": "Remove um cliente pelo ID"
+					}
+				}
+			],
+			"description": "Endpoints para gerenciamento de clientes"
+		},
+		{
+			"name": "📦 PRODUTOS (Port 8082)",
+			"item": [
+				{
+					"name": "📋 Listar Todos os Produtos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"produtos"
+							]
+						},
+						"description": "Retorna todos os produtos cadastrados"
+					}
+				},
+				{
+					"name": "🔍 Buscar Produto por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/produtos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"produtos",
+								"1"
+							]
+						},
+						"description": "Busca um produto específico pelo ID"
+					}
+				},
+				{
+					"name": "➕ Criar Novo Produto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Smartphone Android\",\n  \"descricao\": \"Smartphone Android com 128GB de armazenamento\",\n  \"preco\": 899.99,\n  \"estoque\": 50\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"produtos"
+							]
+						},
+						"description": "Cria um novo produto"
+					}
+				},
+				{
+					"name": "✏️ Atualizar Produto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Smartphone Android Pro\",\n  \"descricao\": \"Smartphone Android Pro com 256GB de armazenamento\",\n  \"preco\": 1199.99,\n  \"estoque\": 30\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/produtos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"produtos",
+								"1"
+							]
+						},
+						"description": "Atualiza um produto existente"
+					}
+				},
+				{
+					"name": "🗑️ Deletar Produto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/produtos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"produtos",
+								"1"
+							]
+						},
+						"description": "Remove um produto pelo ID"
+					}
+				}
+			],
+			"description": "Endpoints para gerenciamento de produtos"
+		},
+		{
+			"name": "🛒 PEDIDOS (Port 8083)",
+			"item": [
+				{
+					"name": "📋 Listar Todos os Pedidos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "Retorna todos os pedidos cadastrados"
+					}
+				},
+				{
+					"name": "🔍 Buscar Pedido por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/pedidos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"pedidos",
+								"1"
+							]
+						},
+						"description": "Busca um pedido específico pelo ID"
+					}
+				},
+				{
+					"name": "👤 Buscar Pedidos por Cliente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/pedidos/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"pedidos",
+								"cliente",
+								"1"
+							]
+						},
+						"description": "Busca todos os pedidos de um cliente específico"
+					}
+				},
+				{
+					"name": "🔍 Detalhes Completos do Pedido",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/pedidos/1/detalhes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"pedidos",
+								"1",
+								"detalhes"
+							]
+						},
+						"description": "Retorna detalhes completos do pedido incluindo dados do cliente e produto dos outros microserviços. Usa Builder Pattern e Service Locator Pattern."
+					}
+				},
+				{
+					"name": "➕ Criar Novo Pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clienteId\": 1,\n  \"produtoId\": 1,\n  \"quantidade\": 2,\n  \"valorTotal\": 1799.98,\n  \"status\": \"PENDENTE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "Cria um novo pedido"
+					}
+				},
+				{
+					"name": "✏️ Atualizar Pedido",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clienteId\": 1,\n  \"produtoId\": 1,\n  \"quantidade\": 3,\n  \"valorTotal\": 2699.97,\n  \"status\": \"CONFIRMADO\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/pedidos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"pedidos",
+								"1"
+							]
+						},
+						"description": "Atualiza um pedido existente"
+					}
+				},
+				{
+					"name": "🗑️ Deletar Pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/pedidos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"pedidos",
+								"1"
+							]
+						},
+						"description": "Remove um pedido pelo ID"
+					}
+				}
+			],
+			"description": "Endpoints para gerenciamento de pedidos"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
