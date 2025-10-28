@@ -1,25 +1,37 @@
 version: '3.8'
+
 services:
   cliente-service:
     build: ./cliente
+    container_name: cliente-service
     ports:
       - "8081:8081"
     environment:
       - SERVER_PORT=8081
       - SPRING_DATASOURCE_URL=jdbc:h2:mem:clientes
-    
+
   produto-service:
     build: ./produto
+    container_name: produto-service
     ports:
       - "8082:8082"
     environment:
       - SERVER_PORT=8082
       - SPRING_DATASOURCE_URL=jdbc:h2:mem:produtos
-    
+
   pedido-service:
     build: ./pedido
+    container_name: pedido-service
+    depends_on:
+      - cliente-service
+      - produto-service
     ports:
       - "8083:8083"
     environment:
       - SERVER_PORT=8083
       - SPRING_DATASOURCE_URL=jdbc:h2:mem:pedidos
+      # 👉 URLs para comunicação entre containers:
+      - APP_SERVICES_CLIENTE_URL=http://cliente-service:8081
+      - APP_SERVICES_PRODUTO_URL=http://produto-service:8082
+      # Perfil ativo do Spring (para diferenciar config local e docker)
+      - SPRING_PROFILES_ACTIVE=docker
